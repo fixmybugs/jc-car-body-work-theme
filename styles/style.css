@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap');
+
+/* --- Variables y Estilos Globales --- */
+:root {
+    --primary-color: #FDE428; 
+    --dark-bg: #121212;
+    --glass-bg: rgba(26, 26, 26, 0.5); /* Fondo para el efecto glass */
+    --text-color: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border-color: rgba(255, 255, 255, 0.1); /* Borde sutil para el cristal */
+    --font-headings: 'Bebas Neue', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--dark-bg); /* Fallback color */
+    /* Patrón de líneas diagonales sutiles */
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 29px,
+        rgba(255, 255, 255, 0.03) 29px,
+        rgba(255, 255, 255, 0.03) 30px
+    );
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-headings);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-weight: normal;
+    letter-spacing: 1.5px;
+}
+
+h1 { font-size: 5rem; }
+h2 { font-size: 4rem; text-align: center; margin-bottom: 3rem; }
+h3 { font-size: 2.5rem; color: var(--primary-color); }
+p { color: var(--text-secondary); margin-bottom: 1rem; }
+a { text-decoration: none; color: var(--text-color); }
+
+/* --- Header y Navegación (Glassmorphism) --- */
+.main-header {
+    background-color: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 75px; /* Marco de visualización del logo */
+    overflow: hidden;
+    position: relative;
+}
+
+.logo img {
+    height: 120px; /* Imagen más grande que el marco */
+    position: relative;
+    top: -22px; /* Mueve la imagen hacia arriba para centrar el crop */
+}
+
+.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    padding: 5px;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Sección Hero --- */
+#hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/image2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero-content .brand-name {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #121212;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+}
+
+/* --- Secciones Generales --- */
+section {
+    padding: 6rem 0;
+}
+
+/* --- Servicios (Glassmorphism) --- */
+#services {
+    background-color: var(--dark-bg);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3, .service-card p {
+    padding: 0 1.5rem;
+}
+
+.service-card h3 {
+    margin-top: 1.5rem;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    padding-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* --- Galería --- */
+#gallery {
+    background-color: #000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* --- Contacto --- */
+#contact {
+    background-color: var(--card-bg);
+    text-align: center;
+}
+
+#contact .container {
+    max-width: 700px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: #000;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.main-footer p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 2rem; }
+
+    .main-header .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .main-nav ul {
+        padding: 0;
+    }
+    
+    .main-nav ul li {
+        margin: 0 15px;
+    }
+
+    #hero {
+        height: 70vh;
+    }
+}
