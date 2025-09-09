@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} - JC CAR BODY WORK</title>
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/"><img src="{{ 'logo_.png' | asset_url }}" alt="JC CAR BODY WORK Logo"></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/collections/all">Shop</a></li>
+                    <li><a href="/#gallery">Gallery</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="/cart" class="cart-link">
+                <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <span class="cart-count">{{ cart.item_count }}</span>
+            </a>
+        </div>
+    </header>
+
+    <main role="main">
+        {{ content_for_layout }}
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; {{ 'now' | date: "%Y" }} JC CAR BODY WORK. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="container" style="padding-top: 4rem; padding-bottom: 4rem;">
+  <h1 style="text-align: center; margin-bottom: 3rem;">{{ collection.title }}</h1>
+
+  {% if collection.products.size > 0 %}
+    <div class="services-grid">
+      {% for product in collection.products %}
+        <div class="service-card">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy">
+            {% else %}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+          <div style="padding: 1.5rem;">
+            <h3>{{ product.title }}</h3>
+            <p class="product-price">{{ product.price | money }}</p>
+            <form method="post" action="/cart/add" style="margin-top: 1rem;">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="btn" style="width: 100%;">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="text-align: center;">There are no products in this collection.</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Collection Page",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+<section id="hero">
+    <div class="hero-content">
+        <h2 class="brand-name">JC CAR BODY WORK</h2>
+        <h1>Excellence and Passion in Every Detail</h1>
+        <p>We transform your vehicle with high-end detailing and painting services.</p>
+        <a href="#contact" class="btn">Get a Quote Now</a>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container">
+        <h2>Our Work</h2>
+        <div class="gallery-grid">
+            <img src="{{ 'CarPainting.png' | asset_url }}" alt="Car painting job">
+            <img src="{{ 'carDetailing.png' | asset_url }}" alt="Car detailing job">
+            <img src="{{ 'RimPainting.png' | asset_url }}" alt="Rim painting job">
+            <img src="{{ 'CarBuffingAndPolishing.png' | asset_url }}" alt="Buffing and polishing job">
+            <img src="{{ 'image1.png' | asset_url }}" alt="Professionally detailed car">
+            <img src="{{ 'image2.jpg' | asset_url }}" alt="Shiny paint finish">
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <h2>Ready to Transform Your Vehicle?</h2>
+    <p>Get in touch with us. Our team of experts is ready to advise you and bring your car back to life.</p>
+    <a href="mailto:contact@jccarbodyworks.com" class="btn">Send an Email</a>
+</section>
+
+{% schema %}
+{
+  "name": "Main Content",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Content"
+    }
+  ]
+}
+{% endschema %}

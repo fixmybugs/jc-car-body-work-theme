@@ -1,0 +1,45 @@
+<div class="container" style="padding-top: 4rem; padding-bottom: 4rem; min-height: 50vh;">
+  <h1 style="text-align: center; margin-bottom: 2rem;">Your Cart</h1>
+
+  {% if cart.empty? %}
+    <div style="text-align: center;">
+        <p>Your cart is currently empty.</p>
+        <a href="/collections/all" class="btn">Continue Shopping</a>
+    </div>
+  {% else %}
+    <form action="/cart" method="post" novalidate class="cart-form">
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+            <img src="{{ item.image | image_url: width: 150 }}" alt="{{ item.image.alt | escape }}" style="width: 100px; height: auto; margin-right: 1.5rem; border-radius: 8px;">
+            <div style="flex-grow: 1;">
+              <a href="{{ item.url }}" style="font-size: 1.2rem; font-family: var(--font-headings);">{{ item.product.title }}</a>
+              <p style="margin-bottom: 0.5rem;">{{ item.price | money }}</p>
+              <div style="display: flex; align-items: center;">
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="1" style="width: 60px; padding: 5px; background-color: var(--dark-bg); color: var(--text-color); border: 1px solid var(--border-color);">
+                <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" style="color: var(--primary-color); margin-left: 1rem; font-size: 0.9rem;">Remove</a>
+              </div>
+            </div>
+            <div style="font-size: 1.2rem; font-family: var(--font-headings);">
+              {{ item.final_line_price | money }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="cart-footer" style="text-align: right; margin-top: 2rem;">
+        <h2 style="font-size: 2rem;">Subtotal: {{ cart.total_price | money }}</h2>
+        <p>Taxes and shipping calculated at checkout.</p>
+        <button type="submit" name="update" class="btn">Update Cart</button>
+        <button type="submit" name="checkout" class="btn" style="margin-left: 1rem;">Checkout</button>
+      </div>
+    </form>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Cart Page",
+  "settings": []
+}
+{% endschema %}

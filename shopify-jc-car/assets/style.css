@@ -265,104 +265,6 @@ section {
     font-size: 0.9rem;
 }
 
-/* --- Formulario de Cotización (Modal) --- */
-.quote-form-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    padding: 20px;
-}
-
-.quote-form-content {
-    background-color: var(--glass-bg);
-    padding: 3rem;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    width: 100%;
-    max-width: 600px;
-    position: relative;
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.quote-form-content h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem;
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2.5rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-btn:hover {
-    color: var(--primary-color);
-}
-
-#quoteForm label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-#quoteForm input, 
-#quoteForm select, 
-#quoteForm textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 1.5rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#quoteForm input:focus, 
-#quoteForm select:focus, 
-#quoteForm textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(253, 228, 40, 0.2);
-}
-
-.form-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.form-buttons .btn {
-    flex: 1;
-    text-align: center;
-}
-
-
 /* --- Responsividad --- */
 @media (max-width: 768px) {
     h1 { font-size: 3.5rem; }
@@ -389,3 +291,48 @@ section {
         height: 70vh;
     }
 }
+
+/* --- Estilos del Carrito --- */
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.cart-icon {
+    width: 28px;
+    height: 28px;
+    transition: color 0.3s ease;
+}
+
+.cart-link:hover .cart-icon {
+    color: var(--primary-color);
+}
+
+.cart-count {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    font-family: var(--font-headings);
+    font-size: 0.8rem;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-weight: bold;
+}
+
+
+/* --- Estilos de Precio de Producto --- */
+.product-price {
+    color: var(--text-color) !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+

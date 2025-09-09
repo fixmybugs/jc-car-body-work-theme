@@ -28,7 +28,7 @@
             <h2 class="brand-name">JC CAR BODY WORK</h2>
             <h1>Excellence and Passion in Every Detail</h1>
             <p>We transform your vehicle with high-end detailing and painting services.</p>
-            <a href="#contact" class="btn">Get a Quote Now</a>
+            <a href="#" id="get-quote-btn-hero" class="btn">Get a Quote Now</a>
         </div>
     </section>
 
@@ -80,7 +80,39 @@
     <section id="contact" class="container">
         <h2>Ready to Transform Your Vehicle?</h2>
         <p>Get in touch with us. Our team of experts is ready to advise you and bring your car back to life.</p>
-        <a href="mailto:contact@jccarbodyworks.com" class="btn">Send an Email</a>
+        <a href="#" id="get-quote-btn-contact" class="btn">Get a Quote</a>
+    </section>
+
+    <section id="quote-form-section" class="quote-form-container" style="display: none;">
+        <div class="quote-form-content">
+            <span id="close-quote-form" class="close-btn">&times;</span>
+            <h2>Request a Quote</h2>
+            <form id="quoteForm">
+                <label for="quote-name">Name:</label>
+                <input type="text" id="quote-name" name="name" required>
+
+                <label for="quote-vehicle">Vehicle Model:</label>
+                <input type="text" id="quote-vehicle" name="vehicle" required>
+
+                <label for="quote-services">Service:</label>
+                <select id="quote-services" name="services" required>
+                    <option value="">Select a service</option>
+                    <option value="Car Buffing">Car Buffing</option>
+                    <option value="Car Polishing">Car Polishing</option>
+                    <option value="Car Painting">Car Painting</option>
+                    <option value="Car Detailing">Car Detailing</option>
+                    <option value="Wheel Rim Painting">Wheel Rim Painting</option>
+                </select>
+
+                <label for="quote-description">Description:</label>
+                <textarea id="quote-description" name="description" rows="4" required></textarea>
+
+                <div class="form-buttons">
+                    <button type="button" id="send-whatsapp" class="btn">Send via WhatsApp</button>
+                    <button type="button" id="send-email" class="btn">Send via Email</button>
+                </div>
+            </form>
+        </div>
     </section>
 
     <footer class="main-footer">
@@ -89,5 +121,77 @@
         </div>
     </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const quoteFormSection = document.getElementById('quote-form-section');
+        const getQuoteBtnHero = document.getElementById('get-quote-btn-hero');
+        const getQuoteBtnContact = document.getElementById('get-quote-btn-contact');
+        const closeQuoteForm = document.getElementById('close-quote-form');
+
+        const quoteForm = document.getElementById('quoteForm');
+        const sendWhatsappBtn = document.getElementById('send-whatsapp');
+        const sendEmailBtn = document.getElementById('send-email');
+
+        function openForm() {
+            quoteFormSection.style.display = 'flex';
+        }
+
+        function closeForm() {
+            quoteFormSection.style.display = 'none';
+        }
+
+        getQuoteBtnHero.addEventListener('click', function(e) {
+            e.preventDefault();
+            openForm();
+        });
+
+        getQuoteBtnContact.addEventListener('click', function(e) {
+            e.preventDefault();
+            openForm();
+        });
+
+        closeQuoteForm.addEventListener('click', closeForm);
+
+        // Close form if clicking outside of it
+        window.addEventListener('click', function(e) {
+            if (e.target == quoteFormSection) {
+                closeForm();
+            }
+        });
+
+        sendWhatsappBtn.addEventListener('click', function() {
+            if (quoteForm.checkValidity()) {
+                const name = document.getElementById('quote-name').value;
+                const vehicle = document.getElementById('quote-vehicle').value;
+                const service = document.getElementById('quote-services').value;
+                const description = document.getElementById('quote-description').value;
+
+                const message = `Hola, me gustaría solicitar una cotización:\n\n*Nombre:* ${name}\n*Vehículo:* ${vehicle}\n*Servicio:* ${service}\n*Descripción:* ${description}`;
+                const whatsappUrl = `https://api.whatsapp.com/send?phone=50232701580&text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappUrl, '_blank');
+            } else {
+                quoteForm.reportValidity();
+            }
+        });
+
+        sendEmailBtn.addEventListener('click', function() {
+            if (quoteForm.checkValidity()) {
+                const name = document.getElementById('quote-name').value;
+                const vehicle = document.getElementById('quote-vehicle').value;
+                const service = document.getElementById('quote-services').value;
+                const description = document.getElementById('quote-description').value;
+
+                const subject = `Solicitud de Cotización - ${name}`;
+                const body = `Hola, me gustaría solicitar una cotización:\n\nNombre: ${name}\nVehículo: ${vehicle}\nServicio: ${service}\nDescripción: ${description}`;
+                const mailtoUrl = `mailto:contact@jccarbodyworks.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                window.location.href = mailtoUrl;
+            } else {
+                quoteForm.reportValidity();
+            }
+        });
+    });
+</script>
 </body>
 </html>
